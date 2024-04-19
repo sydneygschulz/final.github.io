@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>My test page</title>
+    <link href="styles/style.css" rel="stylesheet" /><link
+    href="https://fonts.googleapis.com/css?family=Sixtyfour"
+    rel="stylesheet" />  
+
+    <style>
+      #imageContainer {
+          width: 300px;
+          height: 300px;
+          border: 1px solid #ccc;
+          overflow: hidden;
+      }
+
+      #displayedImage {
+          width: 100%;
+          height: 100%;
+      }
+
+      .button {
+          margin: 10px;
+          padding: 8px;
+          cursor: pointer;
+      }
+  </style>
+
+  </head>
+  <body>
+    <h1>Tracking Crime in Boston</h1>
+    <h2>Marcos Equiza Gasco, Dylan Toplas, Sydney Schulz, Kevin Martone</h2>
+    <h3>General Introduction</h3>
+
+    <p>Boston is a dynamic city known for its many college campuses. As a result, the demographics
+      change drastically as college students come and go throughout the year. These changes affect the
+      general demographics and environment of the city, but we are looking to discover how the
+      changes in the time of year affect crime throughout the city. By examining the location, time, and
+      offense of a crime and comparing it with different neighborhoods, we can discover how
+      different features affect crime in the city. By allowing students and Boston
+      residents to examine crime in their neighborhoods, they can better understand the safety of where
+      they live and how they may be affected by the changing seasons.
+    </p>
+
+    <h3>Data Introduction</h3>
+
+    <p>For our analysis we will be utilizing a <a href="https://boston-pd-crime-hub-boston.hub.arcgis.com/datasets/boston::boston-police-incidents-/explore">dataset</a> found on the Boston Police Data Hub and is free to
+      download for anyone online. The data is broken down into 21 features and approximately
+      212,000 rows. Some of these features are extractions from others, as the column for month data
+      of a crime can also be found in the column containing date-time objects for crimes. However,
+      most of the columns do contain useful/unique information. The majority of the data is
+      categorical in nature, with the main outlier being datetime. This is largely due to the nature of
+      crime data, as the focus is mainly on frequency which is not a continuous datapoint. A major
+      reason we are using this dataset is also for its location information. The dataset includes the zip
+      code, street address, and district for a vast majority of the points. This will allow us to create
+      interesting spatial graphics later on.
+    </p>
+
+    <h3>Interactive Neighborhood Map</h3>
+
+    <p>To have a general understanding of the data, we made an interactive map so 
+      people can have an awareness of the concentration of crime in their neighborhoods.
+      Throughout the years, there is a seemingly common pattern of the neighborhoods
+      with the most crimes, wih Roxbury and Dorchestor with the highest incidence.
+      Additionally, the different T lines are mapped over the neighborhoods to assess
+      whether there is any correlation. There seems to be a higher incidence in neighborhoods close 
+      to the red T line, closely followed by the orange line. 
+      
+    </p>
+
+
+    <div class = 'center'>
+      <iframe src="interactive_map.html" width="85%" height="550px" frameborder="0"></iframe>
+     </div>
+
+
+
+    <h3>Sankey Diagram</h3>
+
+    <div class='container'>
+      <div class='image'>
+        <img src="images/sankey.JPG" height="300"></img>
+      </div>
+      <div class='text'>
+        <p>This is a Sankey diagram showing neighborhood crime flows. The diagram shows the top 
+          five most common crime committed and how often they occur in the top three 
+          neighborhoods with the most instances of crime being committed. In this plot,
+          it is obvious that Dorchester has by far the greatest number of crimes that 
+           have been committed of the eight most common crimes. The two next neighborhoods 
+           have far fewer crimes that are committed. It is also apparant that some of
+            the most common crimes are verbal disputes and assault. It appears as if the 
+            crimes are mostly proportionally split through the neighborhoods.
+        </p>
+      </div>
+    </div>
+
+    <h3>Altair Interactive Line Chart</h3>
+
+    <p>In order to understand the trends of crimes over time, we created an interactive
+      line chart that displays crime trends over a two year period followed by the 
+      a concentration of criems over that period. Based on the graph, it is obvious that 
+      the for each crime, the number of crimes over each month jumps up and down. For example,
+      the number of vandalism crimes were high in August 2022 and then dropped lower in September
+      2022.
+   </p>
+
+    <div class = 'center'>
+        <iframe src="line_chart.html" width="85%" height="550px" frameborder="0"></iframe>
+    </div>
+
+    <h3>D3 Chart</h3>
+
+
+    <div class='container'>
+      <div class='image'>
+        <img src="images/d3_week.JPG" height="700"></img>
+      </div>
+      <div class='text'>
+        <p>We also studied which days of the week most commonly result in crimes. This bar
+          chart shows the number of crimes committed broken down by each day of the week. As 
+          demonstrated on the chart, crimes occur most frequently on Friday as a total of 32,000
+          crimes were committed on Friday. To contrast, approximately 28,000 crimes occured on
+          Sunday, the day when the lowest number of crimes were committed. Interestingly, Saturday
+          is not on the lower or higher end of the spectrum which suggests that weekends vs 
+          weekdays have no impact on the amount of crimes committed. Rather the day of the week as
+          an independent value is the most significant factor.
+        </p>
+      </div>
+    </div>
+
+
+    <div class = 'container'>
+      <div class = 'text'>
+          <p>
+              This bar chart shows which neighborhoods contain the most amount of crimes. It contains
+              26 neighborhoods in Boston and the number of crimes committed in each of the neighborhoods
+              As shown, Dorchester contains the vast majority of crimes committed as 50,000 crimes 
+              have been committed in that neighborhood. The second most common neighborhood is Roxbury.
+              In the remaining neighborhoods, there is less of a difference between the number of crimes 
+              committed. The Harbor Islands have very few crimes recorded and the bar is barely apparant.
+              This is partially to be expected as the Harbor Islands has a population of only 340 people
+              According to <a href="https://www.niche.com/places-to-live/n/harbor-islands-boston-ma/">Niche.</a>
+          </p>
+      </div>
+      <div class = 'image'>
+          <img src="images/d3_neighborhood.JPG" width="90%" height="500px" frameborder="0"></img>
+      </div>   
+  </div>
+
+  <h3>Circle interactive chart</h3>
+
+  <p>These charts showcase a further breakdown on the frequency and type of crimes.
+ </p>
+
+
+  <div class='container'>
+    <div class = 'center'>
+      <iframe src="section_of_day.html" width="550px" height="400px" frameborder="0"></iframe>
+  </div>
+    <div class='text'>
+      <p>In this chart, we are examining the breakdown of crimes committed during each month, broken
+        down by the section of the day.
+        We classify morning as 5 am - 12 pm, afternoon as 12 pm - 5 pm, evening as 5 pm - 9 pm,
+        and night as the remaining time as well as the earlier hours before 5 am.
+        In this plot, you can further dive into the data by clicking on the legend to include/exclude
+        specific categories, and
+        you can also hover over any of the bars to get the specific count of crimes. From this plot
+        we can gather that crimes seem to be committed most frequently in the summer months of July
+        and August.
+        However, it also showed us that when you view only the evening timeframe, the largest
+        amount of crimes are taking place during May.
+      </p>
+    </div>
+  </div>
+
+
+  <div class='container'>
+    <div class='text'>
+      <p>Similar to the previous polar bar chart, we are examining how the count of crimes by month is
+        affected when we separate the data further into
+        day-of-the-week categories. Utilizing the hover data once again we were able to notice
+        that a larger portion of crimes are being committed later on in the week.
+        Again, there were a few outlier months that could use further examination. One example of
+        this is March when the largest crime counts were closer to the center of the week.
+      </p>
+    </div>
+    <div class = 'center'>
+      <iframe src="day_of_week.html" width="550px" height="400px" frameborder="0"></iframe>
+    </div>
+  </div>
+
+
+  <div class='container'>
+    <div class = 'center'>
+      <iframe src="Prop_vs_Vio.html" width="550px" height="400px" frameborder="0"></iframe>
+    </div>
+    <div class='text'>
+      <p>In this last polar bar chart, we are examining the difference between violent and property crimes
+        month by month. The data for this plot was narrowed
+        down to the years after 2020 as this category was not collected/input into the data regularly
+        before then.
+        We can see that in general property crimes are taking place at a much higher rate month
+        over month(Avg ~1.5k for property, .7k for violent).
+        Also, we can continue to observe the trend of more crimes being committed in summer
+        months within both property and violent crime categories
+      </p>
+    </div>
+  </div>
+
+  <h3>Conclusion</h3>
+
+  <p>
+    In summary, we found that larger areas in Boston, particularly Dorchester, 
+    Roxbury, and Downtown (with Chinatown having notably fewer crimes), tend to 
+    experience more crime, which is relevant given their proximity to Northeastern 
+    campus. We noticed that more crimes occur during the summer months, even when 
+    college is out. Verbal assault was the most common crime type, followed by 
+    incidents involving motor vehicles and vandalism. These findings emphasize 
+    the need to understand crime patterns for improving safety measures in urban
+     areas like Boston.
+ </p>
+
+
+
+
+<script src="scripts/main.js"></script>
+  </body>
+</html>
